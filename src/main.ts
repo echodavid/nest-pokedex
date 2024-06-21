@@ -11,9 +11,13 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true, //solo permite data que está definida en el DTO
       forbidNonWhitelisted: true, //lanza un error si hay data no permitida
+      transform: true, //transforma la data a su tipo correct
+      transformOptions: {
+        enableImplicitConversion: true
+      }
     })
   )
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
 }
 bootstrap();
